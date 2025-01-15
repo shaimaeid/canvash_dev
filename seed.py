@@ -1,7 +1,7 @@
 import random
 from app import create_app
-from app.models import db, Product, Category, User, Cart, CartItem
-from app.logger import mylogger
+from myapi.models import db, Product, Category, User, Cart, CartItem
+from myapi.logger import mylogger
 
 def drop_and_create_tables():
     app = create_app()
@@ -127,9 +127,9 @@ def seed_cart_items():
             raise
 
 if __name__ == "__main__":
-    # drop_and_create_tables()    
+    #drop_and_create_tables()    
     # users = seed_users()
-    #categories = seed_categories()
+    # categories = seed_categories()
     products = seed_products()
     carts = seed_carts()
     seed_cart_items()

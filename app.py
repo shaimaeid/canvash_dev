@@ -1,11 +1,11 @@
 import os
 from flask import Flask
 from dotenv import load_dotenv
-from app.routes.web import web
-from app.routes.api import api
-from app.models import db
+from myapi.routes.web import web
+from myapi.routes.api import api
+from myapi.models import db
 from flask_migrate import Migrate
-from app.auth import login_manager
+from myapi.auth import login_manager
 from flask_login import current_user
 import paypalrestsdk
 import paypal_config
@@ -17,7 +17,6 @@ def inject_user():
     cart_count = active_cart.cart_count() if active_cart else 0
     return {'current_user': current_user , 'cart_count': cart_count}
 
-# Application factory to create the Flask app
 def create_app(test_config=None):
     load_dotenv()  # Load environment variables from .env file
     
@@ -29,14 +28,21 @@ def create_app(test_config=None):
     app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_HTTPONLY'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
-
+    
     # Apply test configurations if provided
     if test_config:
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  # In-memory SQLite for testing
     else:
-        basedir = os.path.abspath(os.path.dirname(__file__))
-        db_path = os.path.join(basedir, 'database', 'app.db')
-        app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
+        basedir = os.path.abspath(os.path.dirname(__file__))  # Absolute path to the project directory
+        db_path = os.path.join(basedir, 'database', 'app.db')  # Path to products.db
+
+        # Ensure the database directory exists
+        if not os.path.exists(os.path.join(basedir, 'database')):
+            os.makedirs(os.path.join(basedir, 'database'))
+
+        SQLALCHEMY_DATABASE_URI = f'sqlite:///{db_path}'
+        # Database configuration
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
     
     # Initialize extensions
     db.init_app(app)
@@ -50,6 +56,7 @@ def create_app(test_config=None):
     app.register_blueprint(web)
 
     return app
+
 
 
 # Create the Flask app instance
