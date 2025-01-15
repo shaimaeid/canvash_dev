@@ -41,10 +41,12 @@ def get_user():
     return render_template('user/profile.html') 
 
 @web.route('/user/cart', methods=['GET'])
+@login_required
 def get_user_cart():
     if not current_user.is_authenticated:
         return redirect(url_for('web.web_login'))
     cart = Cart.query.filter_by(user_id=current_user.id).first()
+    print('cart:', cart)
     if not cart:
         return render_template('pages/404.html'), 404
 

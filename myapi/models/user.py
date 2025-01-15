@@ -21,7 +21,7 @@ class User(UserMixin, db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     carts = db.relationship('Cart', backref='cart_owner', lazy=True)
-    transactions = db.relationship('Transaction', backref='transaction_owner', lazy=True)
+    transactions = db.relationship('Transaction', back_populates='user', lazy=True)
 
     def active_cart(self):
         return max(self.carts, key=lambda c: c.created_at) if self.carts else None

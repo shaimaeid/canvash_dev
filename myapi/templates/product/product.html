@@ -60,7 +60,7 @@
      * @param {Number} productId - ID of the product to add to cart
      */
     async function addToCart(productId) {
-        const userId = 2; // Replace with the actual user ID from your application
+        const userId = `{{current_user.id}}`; // Replace with the actual user ID from your application
         const url = `/api/user/${userId}/cart`;
         const data = { product_id: productId, quantity: 1 };
         const apiResponseElement = document.getElementById('api-response');
