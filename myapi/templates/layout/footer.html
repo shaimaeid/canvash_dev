@@ -1,0 +1,53 @@
+<!-- Full-width background section around the footer -->
+<section class="footer-background mt-6">
+    <!-- Footer Menu -->
+    <footer class="footer-menu container">
+        <div class="row">
+            <!-- First Column: Logo and description -->
+            <div class="col-12 col-md-6">
+                <div calss="m-6">
+                <img src="{{ url_for('web.static', filename='images/logo-footer.png') }}" alt="Logo" height="50" class="m-3">
+                <p class="p-3">Creative template store and resource hub where you can integrate our designs with your favorite tools and platforms. We provide a wide range of templates and resources to help you create stunning designs and content.</p>
+            </div>
+        </div>
+
+            <!-- Second Column: Two equal-sized sub-columns -->
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <!-- Who We Are Section -->
+                    <div class="col-12 col-md-6">
+                        <div class="m-3">
+                        <h6>Who we are?</h6>
+                        <ul class="list-unstyled text-dark">
+                            <li><a class="text-dark" href="#">» Company</a></li>
+                            <li><a class="text-dark" href="#">» Team</a></li>
+                            <li><a class="text-dark" href="#">» Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                    <!-- Follow Us Section -->
+                    <div class="col-12 col-md-6">
+                        <div class="m-3">
+                        <h6>Follow Us ...</h6>
+                        <ul class="list-unstyled d-flex justify-content-start flex-wrap">
+                            <li class="m-1"><a href="#"><img src="{{ url_for('web.static', filename='images/f.png') }}" alt="facebook" height="36" width="36"></a></li>
+                            <li class="m-1"><a href="#"><img src="{{ url_for('web.static', filename='images/l.png') }}" alt="linkedin" height="36" width="36"></a></li>
+                            <li class="m-1"><a href="#"><img src="{{ url_for('web.static', filename='images/s.png') }}" alt="instagram" height="36" width="36"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</section>
+
+<!-- Footer Copyright -->
+<div class="footer-copyright text-center py-3">
+    <span>&copy; 2025 Canvash. All rights reserved.</span>
+</div>
+<script src="{{ url_for('web.static', filename='js/bootstrap.bundle.js') }}"></script>
+<script src="{{ url_for('web.static', filename='js/script.js') }}"></script>
+</body>
+</html>

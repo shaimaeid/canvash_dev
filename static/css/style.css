@@ -1,0 +1,277 @@
+:root {
+  --bs-badge-font-size: 0.55em;
+  --bs-badge-font-weight: 500;
+}
+body {
+    background-color: #f5f5f5;
+    /* add background gradient*/
+    background: linear-gradient(to right, #fffdf6, #fff );/*#fffaf2*/
+    background-image: url("/static/images/bg3.svg");
+    background-repeat: no-repeat;
+    padding-top: 150px;
+    font-family: 'Noto sans', sans-serif;
+}
+a, a:focus, a:hover {
+    text-decoration: none;
+    outline: none;
+}
+a:focus
+.top-bar {
+    height: 50px;
+    /*background-color: #f4f6fb;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+
+.header {
+    padding: 20px 0;
+    border-bottom: 1px dotted #ffddd6;
+    margin-bottom: 40px;
+}
+
+/* Custom style for the button-like first link */
+.nav-item{
+    margin-right: 10px;
+}
+/*
+.nav-item a.nav-link{
+    color: #2B2625;
+}
+.nav-item a.nav-link:hover{
+    color: #e97361 !important;
+}
+*/
+.nav-item .nav-link.btn-styled {
+    display: inline-block;
+    padding: 6px 30px;
+    background: linear-gradient(to right, #fd808f, #e97361); /* Gradient background */
+    color: #fff !important;
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    font-weight: bold;
+    transition: background 0.3s ease;
+    text-decoration: none; /* Remove underline */
+}
+
+.nav-item .nav-link.btn-styled:hover {
+    background: linear-gradient(45deg, #feb47b, #ff7e5f); /* Reverse gradient on hover */
+    color: #fff !important;
+}
+
+.btn.btn-styled {
+    padding:2px 6px !important;
+    background: linear-gradient(to right, #ff7c8b, #ff8b7a); /* Gradient background */
+    color: #fff !important;
+    text-align: center;
+    border-radius: 8px; /* Rounded corners */
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+.btn.btn-styled:hover {
+    background: linear-gradient(45deg, #feb47b, #ff7e5f); /* Reverse gradient on hover */
+    color: #fff !important;
+}
+
+@media (max-width: 767px) {
+    .nav-item .nav-link.btn-styled {
+        display: inline-block;
+        padding-left: 0 !important;  /* Adjust padding for mobile */
+        background: none; /* Remove background */
+        color: #2B2625 !important; /* Dark text */
+        text-align: left; /* Left align text */
+        border-radius: 0; /* Remove rounded corners */
+        font-weight: normal; /* Adjust font weight */
+        transition: none; /* No transition effect */
+        text-decoration: none; /* Remove underline */
+    }
+
+    .nav-item .nav-link.btn-styled:hover {
+        background: none; /* No background on hover */
+        color: #e97361 !important; /* Keep text dark on hover */
+    }
+}
+
+
+.intro-section {
+
+    margin-bottom: 20px;
+}
+.intro-section h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+h2.intro{
+    margin-bottom: 20px;
+    color: #f89383;
+    font-weight: 800;
+}
+.article-box-m {
+    color: #fff;
+    background: linear-gradient(45deg, #feb47b, #ff8b7a); /* Reverse gradient on hover */
+    border: 1px solid #ffddd6;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    min-height: 100%;
+}
+.article-box-m:hover {
+    background: linear-gradient(-45deg, #feb47b, #ff8b7a); /* Reverse gradient on hover */
+    border: 1px solid #ffddd6;
+}
+.article-box {
+    background-color: #fff1f1;
+    border: 1px solid #ffddd6;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+
+section.featured-categories {
+
+    margin-top: 60px;
+}
+.featured-categories .category-box {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(20, 0, 0, 0.1);
+    transition: background 0.3s ease;
+    
+}
+/* show background image on top of the box element*/
+
+/* Ensuring the background SVG fills the div */
+.featured-categories .category-box-svg {
+    background-image: url("/static/images/bg5.svg");
+    background-size: 90% 90%; /* Fill the div with the SVG */
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    position: relative; /* To ensure the transform works correctly */
+    transition: transform 0.5s ease; /* Smooth transition for growth effect */
+}
+
+/* Hover effect to grow the div */
+.featured-categories .category-box-svg:hover {
+    background-image: url("/static/images/bg5.svg");
+    background-size: 100% 100%; /* Fill the div with the SVG */
+}
+
+.featured-categories .category-box h5 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.featured-categories .category-box.category-box-1 {
+    color: #fff;
+    background-color: #f8b693;
+}
+
+
+.featured-categories .category-box.category-box-2 {
+    color: #fff;
+    background-color:#39406a;
+}
+
+
+.featured-categories .category-box.category-box-3 {
+    color: #fff;
+    background-color:#f49486;
+}
+.featured-categories .category-box.category-box-4 {
+    color: #fff;
+    background-color: #51BD9C;
+}
+.featured-categories .category-box.category-box-5 {
+    color: #fff;
+    background-color: #63b35b;
+}
+
+.featured-categories .category-box:hover {
+    color: #fff;
+    background: linear-gradient(45deg, #feb47b, #ff7e5f); /* Reverse gradient on hover */
+    cursor: pointer;
+}
+/* Full-width background section */
+.footer-background {
+    background-color: #f8f5ef; /* Dark background for footer */
+
+    margin-top: 4rem; /* Space above the footer */
+    padding: 40px 0; /* Padding inside the footer */
+}
+
+.footer-menu {
+
+    font-size: 14px;
+}
+
+.footer-menu h6 {
+    font-weight: bold;
+}
+.footer-copyright {
+    height: 50px;
+    background-color: #2b2525;
+    color: #fff;
+    font-size: 12px;
+}
+span.pink{
+    color: #f3697a;
+}
+
+/* card overwrite */
+.card.cart {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(20, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: #f8f5ee;
+    color: #2b2525;
+}
+
+table.cart-table > * {
+    background-color: transparent !important;
+}
+
+.navbar-expand-md .navbar-nav .dropdown-menu {
+    background-color: #2b2525;
+}
+
+.navbar input.text-light::placeholder {
+    color:#faebd7 !important;
+    opacity: 0.5; /* Ensure the color is not transparent */
+}
+
+.navbar-toggler {
+    border: none; /* Removes the border */
+    outline: none; /* Removes the outline */
+    box-shadow: none; /* Removes any shadow around the button */
+}
+
+.navbar-toggler:focus, 
+.navbar-toggler:active {
+    outline: none; /* Removes the focus outline */
+    box-shadow: none; /* Removes any active or focus shadow */
+}
+
+
+
+.zoom-image {
+    transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+.zoom-image:hover {
+    transform: scale(1.05); /* Zoom the image by 20% */
+}
+
+.badge {
+    font-size:0.65em ;
+    font-weight: 500;
+    padding: 0.25em 0.4em;
+}
+

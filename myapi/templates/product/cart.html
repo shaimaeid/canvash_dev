@@ -1,0 +1,67 @@
+{% extends "layout/inner-base.html" %}
+
+{% block content %}
+<section>
+    <div class="container" id="cart">
+        <div class="row">
+            <h2 class="text-dark fw-bold">Cart</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <table class="table table-hover cart-table small">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="2">Product</th>
+                            
+                            
+                            <th scope="col">&nbsp</th>
+                            <th scope="col">Q</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr><!-- first td should fit to the image width and don't exceed -->
+
+                            <td width="80"><img src="{{ url_for('web.static', filename='images/img.jpg') }}"
+                                    alt="{{ product.title }}" class="cart-img" width="60"></td>
+                            <td>
+                                <div>
+                                    <p>
+
+                                        <a class="text-dark d-inline-block" href="{{ url_for('web.get_product', id=product.id) }}">{{
+                                            product.title }}</a><br>
+                                            <a href="#">Regular License</a>
+                                        </p>
+                                    
+                                </div>
+
+                            </td>
+
+                            
+                            <td><a href="#" class="text-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                            <td>{{ product.quantity }}</td>
+                            <td>{{ product.price }} <span class="small">USD</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <div class="card cart mt-4">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Your cart total</h6>
+
+                        <h3 class="card-text fw-bold">Total: {{ total }} USD</h3>
+                        <a href="/checkout" class="btn btn-secondary text-light">Proceed to checkout</a>
+                        <p class="small text-muted mt-2">** Price displayed excludes any applicable tax or payment
+                            gateway fees.</p>
+                        <p class="card-text"><b>Included Service</b>: {{ service }} USD (10%)</p>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</section>
+{% endblock %}

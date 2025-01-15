@@ -1,0 +1,15 @@
+{% extends "layout/inner-base.html" %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-lg text-center">
+            <p><span class="fs-4 fw-bold">404</span> - Page not found</p>
+            <img src="{{ url_for('web.static', filename='images/stare.png') }}" width="180" class="img-fluid" alt="404">
+            <h1>Where are the good things?</h1>
+            <p>Sorry, we couldn't find the page you were looking for.</p>
+            <a href="/" class="btn btn-primary text-light">Go back to Home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

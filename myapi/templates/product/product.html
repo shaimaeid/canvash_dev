@@ -1,0 +1,99 @@
+{% extends "layout/inner-base.html" %}
+
+{% block content %}
+<section>
+    <div class="container" id="product">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="text-dark fw-bold">{{ product.title }}</h2>
+                <p class="text-primary">» Templates » {{ product.category.name }}</p>
+                <p class="text-muted">{{ product.description }}</p>
+            </div> 
+            <div class="col-lg-4">
+                <h5 class="text-dark fw-bold display-6">{{ product.price }} USD</h5>
+                <p class="small">Price is in US dollars and excludes tax.<br>
+                    <i class="bi bi-arrow-down-circle-fill"></i>
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    <b>101</b> total downloads
+                </p>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <!-- Product thumbnail images -->
+                <img src="{{ url_for('web.static', filename='images/img.jpg') }}" class="w-100 mb-3 d-block" alt="{{ product.title }}">
+                <img src="{{ url_for('web.static', filename='images/img.jpg') }}" class="w-100 mb-3 d-block" alt="{{ product.title }}">
+                <img src="{{ url_for('web.static', filename='images/img.jpg') }}" class="w-100 mb-3 d-block" alt="{{ product.title }}">
+            </div>
+            <div class="col-lg-6">
+                <!-- Main product image -->
+                <img src="{{ url_for('web.static', filename='images/img.jpg') }}" class="card-img-top" alt="{{ product.title }}">
+            </div>
+            <div class="col-lg-4">
+                <!-- Action buttons -->
+                <button class="btn btn-dark text-light w-100 mb-3" onclick="addToCart({{ product.id }})">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart
+                </button>
+                <!-- Empty element for API response -->
+                <p id="api-response" class="mt-2"></p>
+                <button class="btn btn-primary text-light w-100 mb-3">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now
+                </button>
+                <p><b>Last Update:</b> 25 November 2020</p>
+                <p><b>Published:</b> 15 July 2020</p>
+                <p><b>Files Included:</b> .jpg, .png, .pdf</p>
+                <p><b>Compatible with: </b>Canva, Google Doc</p>
+                <button class="btn btn-secondary text-light w-100 mb-3">
+                    <i class="fa fa-pencil-square" aria-hidden="true"></i> Request Customization
+                </button>
+                <p class="text-muted small">Your files will be available to download once payment is confirmed. 
+                    <br>Instant download items don’t accept returns, exchanges or cancellations. Please contact the seller about any problems with your order.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    /**
+     * Add product to cart using fetch API
+     * @param {Number} productId - ID of the product to add to cart
+     */
+    async function addToCart(productId) {
+        const userId = 2; // Replace with the actual user ID from your application
+        const url = `/api/user/${userId}/cart`;
+        const data = { product_id: productId, quantity: 1 };
+        const apiResponseElement = document.getElementById('api-response');
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Failed to add product to cart');
+            }
+
+            const result = await response.json();
+            console.log('Product added to cart:', result);
+
+            // Display success message
+            apiResponseElement.textContent = 'Product added to cart successfully!';
+            apiResponseElement.classList.remove('text-danger');
+            apiResponseElement.classList.add('text-success');
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+
+            // Display error message
+            apiResponseElement.textContent = error.message || 'Failed to add product to cart.';
+            apiResponseElement.classList.remove('text-success');
+            apiResponseElement.classList.add('text-danger');
+        }
+    }
+</script>
+{% endblock %}

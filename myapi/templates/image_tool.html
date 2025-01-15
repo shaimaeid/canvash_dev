@@ -1,0 +1,70 @@
+{% extends "layout/inner-base.html" %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <h2 class="text-left">Image Tool</h2>
+        <div class="col-lg-8 text-center bg-light p-3 rounded-3">
+            <p>Here is your image:</p>
+            <img src="{{ url_for('web.static', filename='images/img.jpg') }}" alt="sample" height="400">
+        </div>
+        <div class="col-lg-4">
+            <form enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="image" class="form-label fw-bold">Upload Image</label>
+                    <input type="file" class="form-control text-dark" id="image" name="image">
+                </div>
+                <div class="mb-3">
+                    <label for="text" class="form-label">Text</label>
+                    <input type="text" class="form-control" id="text" name="text">
+                </div>
+                <button type="submit" id="submit" class="btn btn-primary">Upload</button>
+                <button type="button" id="clear" class="btn btn-secondary">Clear</button>
+                <button type="button" id="save" class="btn btn-success">Save</button>
+                <button type="button" id="delete" class="btn btn-danger">Delete</button>
+            </form>
+            <div id="alert-container" class="mt-3"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('#submit').addEventListener('click', function (event) {
+            event.preventDefault();
+            const form = document.querySelector('form');
+            const formData = new FormData(form);
+
+            fetch('/api/upload_image', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    showAlert('success', 'Image uploaded successfully');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    showAlert('danger', 'Failed to upload image');
+                });
+        });
+
+        document.querySelector('#clear').addEventListener('click', function () {
+            document.querySelector('form').reset();
+        });
+
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alert-container');
+            alertContainer.innerHTML = `
+                <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `;
+        }
+    });
+</script>
+{% endblock %}

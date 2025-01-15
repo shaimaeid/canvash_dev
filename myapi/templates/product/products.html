@@ -1,0 +1,76 @@
+{% extends "layout/inner-base.html" %}
+
+{% block content %}
+<section>
+    <div class="container" >
+        <h2 class="text-dark fw-bold">All Templates</h2>
+        <p class="text-primary">» <a href="/">Home</a> » All Templates</p>
+        <!-- display the count of total products-->
+        <p>We found <span class="fw-bold">{{ pagination.total }}</span> products for you.</p>
+    <div class="row" id="products">
+        {% for product in products %}
+            <div class="col-lg-4">
+                <div class="card mb-6 shadow-sm mt-3">
+                    <a href="{{ url_for('web.get_product', id=product.id) }}"><img src="{{ url_for('web.static', filename='images/img.jpg') }}" class="card-img-top" alt="{{ product.title }}"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ url_for('web.get_product', id=product.id) }}">{{ product.title }}</a>
+                        </h5>
+                        <p class="card-text">{{ product.description[:70] }} ...</p>
+                        <p class="card-text text-secondary"><a href="{{ url_for('web.get_category_products', slug=product.category.slug) }}">{{ product.category.name }}</a></p>
+                        <p class="card-text fw-bold">{{ product.price }} USD</p>
+                        <a href="#" class="btn btn-dark text-light">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination controls -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center mt-3">
+            {% if pagination.has_prev %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('web.get_products', page=pagination.prev_num) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            {% for page_num in pagination.iter_pages() %}
+            {% if page_num %}
+            {% if page_num == pagination.page %}
+            <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="{{ url_for('web.get_products', page=page_num) }}">{{ page_num }}</a></li>
+            {% endif %}
+            {% else %}
+            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if pagination.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('web.get_products', page=pagination.next_num) }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    </div>
+</section>
+    
+{% endblock %}

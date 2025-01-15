@@ -1,0 +1,15 @@
+{% extends "layout/inner-base.html" %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-lg text-center">
+            <p class="fs-4 fw-bold">Comming Soon</p>
+            <img src="{{ url_for('web.static', filename='images/breakfast.png') }}" width="180" class="img-fluid" alt="404">
+            <h1>Whe are working on cool stuff here</h1>
+            <p>Sorry, we are working on this page. Please check back later.</p>
+            <a href="/" class="btn btn-primary text-light">Go back to Home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
