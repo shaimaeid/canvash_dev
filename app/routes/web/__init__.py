@@ -5,4 +5,4 @@ web = Blueprint('web', __name__,
                 static_folder='static',
                 static_url_path='/static')
 
-from myapi.routes.web import main, product, user
+from app.routes.web import main, product, user

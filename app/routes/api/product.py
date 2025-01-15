@@ -1,10 +1,10 @@
 # product.py
 from flask import Blueprint, request, jsonify
-from myapi.models import db, Product
-from myapi.logger import mylogger
+from app.models import db, Product
+from app.logger import mylogger
 from werkzeug.utils import secure_filename
 import os
-from myapi.routes.api import api
+from app.routes.api import api
 
 
 @api.route('/products', methods=['POST'])

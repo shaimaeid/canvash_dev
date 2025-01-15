@@ -1,7 +1,7 @@
 
 from flask import redirect, url_for
 from flask_login import LoginManager
-from myapi.models import User
+from app.models import User
 
 login_manager = LoginManager()
 

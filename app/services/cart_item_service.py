@@ -1,4 +1,4 @@
-from myapi.models import db, CartItem
+from app.models import db, CartItem
 
 class CartItemService:
     @staticmethod

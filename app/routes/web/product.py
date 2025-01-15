@@ -1,8 +1,8 @@
 from flask import jsonify, request, render_template, Blueprint
-from myapi.routes.web import web
-from myapi.models import db, Product, User, Cart, CartItem, Category
-from myapi.routes.api import api
-from myapi.logger import mylogger
+from app.routes.web import web
+from app.models import db, Product, User, Cart, CartItem, Category
+from app.routes.api import api
+from app.logger import mylogger
 
 @web.route('/products', methods=['GET'])
 def get_products():

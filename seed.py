@@ -1,7 +1,7 @@
 import random
 from app import create_app
-from myapi.models import db, Product, Category, User, Cart, CartItem
-from myapi.logger import mylogger
+from app.models import db, Product, Category, User, Cart, CartItem
+from app.logger import mylogger
 
 def drop_and_create_tables():
     app = create_app()

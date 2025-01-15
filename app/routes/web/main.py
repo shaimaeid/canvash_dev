@@ -1,8 +1,8 @@
 # routes.py
 from flask import jsonify, request,  render_template
-from myapi.routes.web import web
-from myapi.models import db, Product 
-from myapi.logger import mylogger
+from app.routes.web import web
+from app.models import db, Product 
+from app.logger import mylogger
 from werkzeug.utils import secure_filename
 from flask_login import current_user
 

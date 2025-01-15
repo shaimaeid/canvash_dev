@@ -1,4 +1,4 @@
-from myapi.models import db, User, Transaction, TransactionType, TransactionStatus
+from app.models import db, User, Transaction, TransactionType, TransactionStatus
 from datetime import datetime
 
 

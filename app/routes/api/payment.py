@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from myapi.services.cart_service import CartService
-from myapi.routes.api import api
+from app.services.cart_service import CartService
+from app.routes.api import api
 
 @api.route('/pay', methods=['POST'])
 def api_create_payment():

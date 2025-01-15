@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from myapi.models import db, CartItem
-from myapi.routes.api import api
+from app.models import db, CartItem
+from app.routes.api import api
 
 @api.route('/cart_items', methods=['POST'])
 def create_cart_item():

@@ -1,10 +1,10 @@
-from myapi.routes.web import web
+from app.routes.web import web
 from flask import request, redirect, url_for, flash, render_template
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_bcrypt import Bcrypt
-from myapi.models import db, Product, User, Cart, CartItem, Category
-from myapi.logger import mylogger
+from app.models import db, Product, User, Cart, CartItem, Category
+from app.logger import mylogger
 from flask_login import current_user
 
 bcrypt = Bcrypt()

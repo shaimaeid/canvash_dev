@@ -1,5 +1,5 @@
 from datetime import datetime
-from myapi.models import db, Order, OrderStatus, Cart, CartItem, UserItem, Transaction, TransactionStatus
+from app.models import db, Order, OrderStatus, Cart, CartItem, UserItem, Transaction, TransactionStatus
 
 class OrderService:
     """Service class to handle all order-related operations."""

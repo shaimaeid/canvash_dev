@@ -1,8 +1,8 @@
 from flask import request, jsonify
-from myapi.models import db, User
-from myapi.services.cart_service import CartService
+from app.models import db, User
+from app.services.cart_service import CartService
 from werkzeug.security import generate_password_hash, check_password_hash
-from myapi.routes.api import api
+from app.routes.api import api
 from flask_login import login_user, logout_user, login_required
 from flask_bcrypt import Bcrypt
 

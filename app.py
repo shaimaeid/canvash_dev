@@ -1,11 +1,11 @@
 import os
 from flask import Flask
 from dotenv import load_dotenv
-from myapi.routes.web import web
-from myapi.routes.api import api
-from myapi.models import db
+from app.routes.web import web
+from app.routes.api import api
+from app.models import db
 from flask_migrate import Migrate
-from myapi.auth import login_manager
+from app.auth import login_manager
 from flask_login import current_user
 import paypalrestsdk
 import paypal_config

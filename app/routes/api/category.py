@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from myapi.models import db, Category
-from myapi.routes.api import api
+from app.models import db, Category
+from app.routes.api import api
 
 @api.route('/categories', methods=['GET'])
 def get_categories():
